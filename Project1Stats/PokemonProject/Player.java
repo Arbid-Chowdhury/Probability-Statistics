@@ -241,22 +241,18 @@ public class Player {                                                   // Playe
         System.out.println(getActive().getCardName() + " has " + activeEnergyCounter() + " energy cards attached");     // Inform player how many energy cards are attached to activePokemon
         if (activeEnergyCounter() >= 1 && attackType == 1 && !getActive().getIfEvolved()) {                             // if activeEnergyCounter is greater than or equal to 1, attackType is 1, and Pokemon is basic
             getActive().damageEnemy(1, player2.getActive());                                                 // use getActive method for Pokemon to use damageEnemy method to damage enemy Pokemon
-            player.discardEnergy(1);                                                                             // discardEnergy method used to discard 1 energy card
             return true;                                                                                                // Return true
         }
         else if (activeEnergyCounter() >= 2 && attackType == 2 && !getActive().getIfEvolved()) {                        // else if activeEnergyCounter is greater than or equal to 2, attackType is 2, and Pokemon is basic
             getActive().damageEnemy(2, player2.getActive());                                                 // use getActive method for Pokemon to use damageEnemy method to damage enemy Pokemon
-            player.discardEnergy(2);                                                                             // discardEnergy method used to discard 2 energy cards
             return true;                                                                                                // Return true
         } 
         else if (activeEnergyCounter() >= 2 && attackType == 1 && getActive().getIfEvolved()) {                         // else if activeEnergyCounter is greater than or equal to 2, attackType is 1, and Pokemon is evolved
             getActive().damageEnemy(1, player2.getActive());                                                 // use getActive method for Pokemon to use damageEnemy method to damage enemy Pokemon
-            player.discardEnergy(2);                                                                             // discardEnergy method used to discard 2 energy cards
             return true;                                                                                                // Return true
         }
         else if (activeEnergyCounter() >= 3 && attackType == 2 && getActive().getIfEvolved()) {                         // else if activeEnergyCounter is greater than or equal to 3, attackType is 2, and Pokemon is evolved
             getActive().damageEnemy(2, player2.getActive());                                                 // use getActive method for Pokemon to use damageEnemy method to damage enemy Pokemon
-            player.discardEnergy(3);                                                                             // discardEnergy method used to discard 3 energy cards
             return true;                                                                                                // Return true
         }
         else {                                                                                                          // else
