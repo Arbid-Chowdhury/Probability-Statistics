@@ -191,14 +191,7 @@ public class Player {                                                   // Playe
         else {                                                                                                  // else
             System.out.println("Bench is currently full so removing Active Pokemon is not allowed");          // Inform player bench is full
         }
-    }
-
-
-    private void discardEnergy(int attack) {                                                                // discardEnergy method for discarding energy cards depending on attack type
-        for (int i = 0; i < attack; i++) {                                                                  // for loop to discard energy cards based on attack type
-            discardCard(activePokemonEnergy.remove(0));                                               // discard energy card from activePokemonEnergy ArrayList
-        }
-    }                                    
+    }                                
     
     private void discardAllEnergy() {
         discardPile.addAll(activePokemonEnergy);                                                            // discardAllEnergy method for discarding all energy cards after replacing activePokemon
