@@ -77,11 +77,11 @@ public class Player {                                                   // Playe
         return bench.get(pokePosition);                                             // Return card from bench ArrayList based on pokePosition
     }
 
-    public void removeCardHand(Card card) {                                         // removeCard method for removing card from hand
+    public void removeCardHand(Card card) {                                         // removeCardHand method for removing card from hand
         hand.remove(card);                                                          // removes card from hand 
     }
 
-    public void removeCardBench(PokemonCard card) {                                 // removeCard method for removing card from bench
+    public void removeCardBench(PokemonCard card) {                                 // removeCardBench method for removing card from bench
         bench.remove(card);                                                         // removes card from bench
     }
 
@@ -178,18 +178,18 @@ public class Player {                                                   // Playe
             System.out.println(countPrizePile() + " prize cards left to collect");                              // Inform player how many prize cards are left
         }
         else {                                                                                                  // else               
-            System.out.println(getName() + " prize pile is fully collected");                                   // Inform player prize pile is fully collected
+            System.out.println(getName() + " prize pile is all collected");                                     // Inform player prize pile is fully collected
         }
     }
 
-    public void benchActivePokemon() {                                                                       // benchActivePokemon method for benching activePokemon
+    public void benchActivePokemon() {                                                                          // benchActivePokemon method for benching activePokemon
         if (checkBenchCapacity() < 5) {                                                                         // if checkBenchCapacity is less than 5
             bench.add(getActive());                                                                             // add the activePokemon to bench
             activePokemon = null;                                                                               // set activePokemon to null
             discardAllEnergy();                                                                                 // discardAllEnergy method used to discard all energy attached to activePokemon
         }
         else {                                                                                                  // else
-            System.out.println("Bench is currently full, Unable to remove active Pokemon");                   // Inform player bench is full
+            System.out.println("Bench is currently full so removing Active Pokemon is not allowed");          // Inform player bench is full
         }
     }
 
@@ -267,15 +267,15 @@ public class Player {                                                   // Playe
 
     public boolean evaluateWinner(Player player2) {                                                                     // evaluateWinner boolean method for evaluating the Pokemon Game winner 
         if (countPrizePile() == 0) {                                                                                    // if Win Condition 1, countPrizePile is 0
-            System.out.println(getName() + " has collected all their prize cards");                                     // Inform player has collected all their prize cards
+            System.out.println(getName() + " has collected all their prize pile cards");                                // Inform player has collected all their prize cards
             return true;                                                                                                // Return true
         }
         else if (player2.ifDeckEmpty()) {                                                                               // else if Win Condition 2, player2 deck is empty       
-            System.out.println(player2.getName() + "'s deck is empty");                                                 // Inform current player that player2's deck is empty
+            System.out.println(player2.getName() + "'s deck is now empty");                                                 // Inform current player that player2's deck is empty
             return true;                                                                                                // Return true                  
         }
         else if (player2.checkBenchCapacity() == 0 && player2.getActive().pokemonDefeated() == true) {                  // else if Win Condition 3, player2 bench is empty and activePokemon is defeated
-            System.out.println(player2.getName() + " has no Pokemon left");                                             // Inform current player that player2 has empty field
+            System.out.println(player2.getName() + " has 0 Pokemon left on their field");                               // Inform current player that player2 has empty field
             return true;                                                                                                // Return true                          
         }   
         return false;                                                                                                   // Return false if none of the Win Conditions are met                                

@@ -66,7 +66,8 @@ public class PokemonGameMenu {
         System.out.println("6. Players can play Energy cards to attach to their Active Pokemon for attacking once per turn, turn ending after the attack");
         System.out.println("7. Players can attack with their Active Pokemon once per turn, using their normal attack or stronger special move, special move requiring 1 more Energy attached to the Pokemon");
         System.out.println("8. Players can win the game by collecting all of their 6 prize cards by defeating 6 of the opponent's Pokemon");
-        System.out.println("9. Players can also win if their opponent doesnt have any Pokemon on both Active and Bench or just ran out cards in deck");
+        System.out.println("9. Players can evolve their Active or bench Pokemon as long as the Pokemon matches the Pokemon evolution line, also Evolved Pokemon require 1 extra energy than basic for their attacks");
+        System.out.println("10. Players can also win if their opponent doesnt have any Pokemon on both Active and Bench or just ran out cards in deck");
     }
 
     private void gameTime() {                                                                               // gameTime method encompasses setting up field and gameplay
@@ -75,11 +76,9 @@ public class PokemonGameMenu {
         Player p2 = setPlayer(choice, 2);                                                               // setPlayer method to set player 2
         p1.makePrizePile(p2);                                                                               // makePrizePile method to create prize pile for player 1
         p2.makePrizePile(p1);                                                                               // makePrizePile method to create prize pile for player 2            
-
         System.out.println("Battle Incoming: ");                                                          // Display battle incoming 
         System.out.println(p1.getName() + " VS. " + p2.getName());                                          // Display player 1 vs player 2
-
-        System.out.println("First turn goes to the Player who wins the coin flip.");                      // Display coin flip rules
+        System.out.println("First turn/field setup goes to coin flip winning player.");                   // Display coin flip rules
         System.out.println(p1.getName() + " choose 0 for heads or 1 for tails: ");                          // Player 1 is informed to select 0 for heads or 1 for tails
         int coinOption = choice.nextInt();                                                                  // int coinOption is input from player 1
         while (coinOption != 0 && coinOption != 1 ) {                                                       // while not choosing 0 or 1   
@@ -169,7 +168,7 @@ public class PokemonGameMenu {
                         checkDraw = true;                                                                                               // checkDraw is set to true
                     }   
                     else {                                                                                                              // else
-                        System.out.println("You can draw only once a turn, Select another option: ");                                 // Informs player 1 they can only draw once per turn 
+                        System.out.println("You can draw only once a turn, Choose another turn option: ");                            // Informs player 1 they can only draw once per turn 
                     }
                     break;                                                                                                              // break 
                 case 2:                                                                                                                 // Case 2 for playing a Trainer card
@@ -187,7 +186,7 @@ public class PokemonGameMenu {
                         checkEnergy = playEnergyTurn(turn, p1, energyCard);                                                             // playEnergyTurn method to play the Energy and checkenergy boolean is true if Energy is attached
                     }
                     else {                                                                                                              // else
-                        System.out.println("You can only attach one energy card per turn, Select another turn option: \n");           // Informs player 1 they can only attach one Energy per turn
+                        System.out.println("You can only attach one energy card per turn, Choose another turn option: \n");           // Informs player 1 they can only attach one Energy per turn
                     }       
                     break;                                                                                                              // break
 
@@ -211,7 +210,7 @@ public class PokemonGameMenu {
                         checkRetreat = playSwapRetreatTurn(turn, p1, benchPokemon);                                                                 // playRetreatTurn method to Swap/Retreat the activePokemon with a benchPokemon and checkRetreat boolean is true if swap/retreat occurs
                     } 
                     else {                                                                                                                          // else
-                        System.out.println("You can only Swap/Retreat once per turn, Select another turn option: ");                              // Informs player 1 they can Swap/Retreat only once per turn
+                        System.out.println("You can only Swap/Retreat once per turn, Choose another turn option: ");                              // Informs player 1 they can Swap/Retreat only once per turn
                     }
                     break;                                                                                                                          // break
 
@@ -259,7 +258,7 @@ public class PokemonGameMenu {
                     break;                                                                                                                          // break
 
                 default:                                                                                                                            // default Case for incorrect input
-                    System.out.println("Select one of the assigned turn options: ");                                                              // Inform player 1 to select one of the assigned turn options
+                    System.out.println("Choose one of the assigned turn options: ");                                                              // Inform player 1 to select one of the assigned turn options
             }
             System.out.println("---------^-------------------------------------------^----------");                                               // Display turn results divider
             System.out.println("---------|---------- T U R N  R E S U L T S ---------|----------");
@@ -271,6 +270,7 @@ public class PokemonGameMenu {
             System.out.println("Opponent's Bench: \n");                                                                           
             p2.displayBench();                                                                                                                      // Display player 2's bench
             System.out.println();
+            System.out.println("Deck Cards: " + p2.getDeckSize() + " -- Discard Pile: " + p2.getDiscardSize());                                     // Display player 2's deck size and discard pile size 
             System.out.println("Opponent's Active Pokemon: \n");
             p2.displayActive();                                                                                                                     // Display player 2's active Pokemon
             System.out.print(" [ HP ]: " + p2.getActive().getHp());                                                                                 // Display player 2's active Pokemon HP
