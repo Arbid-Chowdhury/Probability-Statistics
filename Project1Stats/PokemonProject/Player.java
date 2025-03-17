@@ -260,7 +260,7 @@ public class Player {                                                   // Playe
             return true;                                                                                                // Return true
         }
         else if (player2.ifDeckEmpty()) {                                                                               // else if Win Condition 2, player2 deck is empty       
-            System.out.println(player2.getName() + "'s deck is now empty");                                                 // Inform current player that player2's deck is empty
+            System.out.println(player2.getName() + "'s deck is now empty");                                             // Inform current player that player2's deck is empty
             return true;                                                                                                // Return true                  
         }
         else if (player2.checkBenchCapacity() == 0 && player2.getActive().pokemonDefeated() == true) {                  // else if Win Condition 3, player2 bench is empty and activePokemon is defeated

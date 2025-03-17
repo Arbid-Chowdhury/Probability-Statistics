@@ -116,7 +116,7 @@ public class PokemonGameMenu {
     private void activeSetup(Player player, Scanner choice) {                                                                                                                                                      // activeSetup method that sets the player's activePokemon
         System.out.println(player.getName() + " choose your Active Pokemon by entering its assigned number: \n");                                                                                                  // Informs player to choose active Pokemon
         player.displayHand();                                                                                                                                                                                      // Display the player's hand, adjusted to 1 based index in displayHand method
-        System.out.println("\nMust be a Pokemon card and not an Energy/Trainer card. \n");                                                                                                                       // Informs player to choose a Pokemon and not the other types
+        System.out.println();
         int activePoke = choice.nextInt() - 1;                                                                                                                                                                     // int activePoke is input from player - 1, due to ArrayList being 0 based index
         while (activePoke < 0 || activePoke >= player.checkHandSize() || !(player.getCardFromHand(activePoke) instanceof PokemonCard) || (((PokemonCard) player.getCardFromHand(activePoke)).getIfEvolved())) {    // while outside hand range or not a basic Pokemon card type                                                             
             System.out.println("Choose a basic Pokemon card within your hand size: ");                                                                                                                           // Inform player to choose a Pokemon within their hand 
@@ -130,13 +130,13 @@ public class PokemonGameMenu {
     private void benchSetup(Player player, Scanner choice) {                                                                                                                                                       // benchSetup method that sets the player's bench Pokemon
         System.out.println( player.getName() + " choose up to 5 bench Pokemon by entering the card's number or 0 to stop adding to bench: \n");                                                                    // Player is asked to choose up to 5 bench Pokemon or enter 0 to stop adding to bench
         player.displayHand();                                                                                                                                                                                      // Display the player's hand
-        System.out.println("\nMust be a Pokemon card and not an Energy/Trainer card. \n");                                                                                                                       // Informs player to choose a Pokemon and not the other types
+        System.out.println();
         int benchPoke = choice.nextInt() - 1;                                                                                                                                                                      // int benchPoke is input from player
         if (exitInput(benchPoke)) {                                                                                                                                                                                // exit input to stop bench setup before adding any bench Pokemon
             return;                                                                                                                                                                                                // Return to stop bench setup 
         }
         while (benchPoke < 0 || benchPoke >= player.checkHandSize() || !(player.getCardFromHand(benchPoke) instanceof PokemonCard) || (((PokemonCard) player.getCardFromHand(benchPoke)).getIfEvolved())) {        // while loop outside hand range or not a basic Pokemon card type
-            System.out.println("Choose a Pokemon card within your hand card size: ");                                                                                                                            // Informs player to choose a card within their hand
+            System.out.println("Choose a Pokemon card within your hand size: ");                                                                                                                                 // Informs player to choose a card within their hand
             player.displayHand();                                                                                                                                                                                  // Display the player's hand
             benchPoke = choice.nextInt() - 1;                                                                                                                                                                      // Take benchPoke input again
             if (exitInput(benchPoke)) {                                                                                                 // exit input to stop bench setup during bench reselection
@@ -236,13 +236,13 @@ public class PokemonGameMenu {
                     System.out.println("Choose Active Pokemon or bench to evolve, 1 and 2 respectively, or enter 0 to exit option: ");            // Informs player to choose activePokemon or bench to evolve Pokemon or enter 0 to exit option
                     int choice = turn.nextInt();                                                                                                    // choice is input from player 1
                     if (choice == 1) {                                                                                                              // if choice is 1
-                        playEvolveActiveTurn(p1, turn);                                                                                             // playEvolveActiveTurn method to evolve activePokemon
+                        playEvolveActiveTurn(turn, p1);                                                                                             // playEvolveActiveTurn method to evolve activePokemon
                     }
                     else if (choice == 2) {                                                                                                         // else if choice is 2
-                        playEvolveBenchTurn(p1, turn);                                                                                              // playEvolveBenchTurn method to evolve Pokemon from bench
+                        playEvolveBenchTurn(turn, p1);                                                                                              // playEvolveBenchTurn method to evolve Pokemon from bench
                     }
                     else {                                                                                                                          // else
-                        System.out.println("Select 1 or 2 to evolve Pokemon or 0 to exit: ");                                                     // Informs player 1 to select 1 or 2 to evolve Pokemon or enter 0 to exit
+                        System.out.println("Enter 1 or 2 to evolve Pokemon or 0 to exit: ");                                                     // Informs player 1 to enter 1 or 2 to evolve Pokemon or enter 0 to exit
                     }
                     break;                                                                                                                          // break
 
@@ -267,17 +267,17 @@ public class PokemonGameMenu {
     }
 
     private void displayField(Player p1, Player p2) {                                                                                               // displayField method that displays the game field for both players
-            System.out.println("Opponent's Bench: \n");                                                                           
+            System.out.println("\n--------------------------------------------------------------------");
+            System.out.println("Opponent's Bench: ");                                                                           
             p2.displayBench();                                                                                                                      // Display player 2's bench
-            System.out.println();
+            System.out.println("\n");
             System.out.println("Deck Cards: " + p2.getDeckSize() + " -- Discard Pile: " + p2.getDiscardSize());                                     // Display player 2's deck size and discard pile size 
             System.out.println("Opponent's Active Pokemon: \n");
             p2.displayActive();                                                                                                                     // Display player 2's active Pokemon
             System.out.print(" [ HP ]: " + p2.getActive().getHp());                                                                                 // Display player 2's active Pokemon HP
-            System.out.println();
-
+            System.out.println("\n--------------------------------------------------------------------");
             System.out.println("\nPrize Pile Differnce: " + p1.getName() + " [" + p1.countPrizePile() + "] " + " --  " + p2.getName() + " [" + p2.countPrizePile() + "] \n");  //Prize Pile status between players
-
+            System.out.println("--------------------------------------------------------------------");
             System.out.println("Active Pokemon: \n");   
             p1.displayActive();                                                                                                     // Display player 1's active Pokemon
             System.out.print(" [ HP ]: " + p1.getActive().getHp());                                                                 // Display player 1's active Pokemon HP
@@ -286,8 +286,7 @@ public class PokemonGameMenu {
             p1.displayBench();                                                                                                      // Display player 1's bench
             System.out.println("\n");                                                                           
             System.out.println("Deck Cards: " + p1.getDeckSize() + " -- Discard Pile: " + p1.getDiscardSize());                     // Display player 1's deck size and discard pile size                                                                                                   
-            System.out.println("\n");
-
+            System.out.println("--------------------------------------------------------------------");
             System.out.println(p1.getName() + "'s turn \n");                                                                        // Display player 1's turn
             System.out.println("Hand: ");
             p1.displayHand();                                                                                                       // Display player 1's hand
@@ -434,7 +433,7 @@ public class PokemonGameMenu {
         }                                  
     }
 
-    private void playEvolveActiveTurn(Player player, Scanner turn) {                                                                                     // playEvolveActiveTurn method lets player to evolve activePokemon
+    private void playEvolveActiveTurn(Scanner turn, Player player) {                                                                                     // playEvolveActiveTurn method lets player to evolve activePokemon
         System.out.println("Active Pokemon: ");                                                                                                        // Print activePokemon
         player.displayActive();                                                                                                                          // Display player's activePokemon
         System.out.println("Choose a Pokemon card from hand to evolve the active Pokemon or enter 0 to exit option: ");                                // Informs player to choose a Pokemon from hand to evolve activePokemon or enter 0 to exit 
@@ -459,7 +458,7 @@ public class PokemonGameMenu {
         player.displayActive();
     }
 
-    private void playEvolveBenchTurn(Player player, Scanner turn) {                                                                                      // playEvolveBenchTurn method lets player to evolve Pokemon from bench
+    private void playEvolveBenchTurn(Scanner turn, Player player) {                                                                                      // playEvolveBenchTurn method lets player to evolve Pokemon from bench
         System.out.println("Bench: ");                                                                                                                 // Print bench
         player.displayBench();                                                                                                                           // Display player's bench
         System.out.println("Choose a Pokemon card to evolve from bench or enter 0 to exit option: ");                                                  // Informs player to choose a Pokemon to evolve from bench or enter 0 to exit 

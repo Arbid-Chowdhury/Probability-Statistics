@@ -12,7 +12,7 @@ public class UltraPotion extends TrainerCard {                                  
         System.out.println("Activating " + getCardName());                              // prints out that this specific TrainerCard is being activated               
         playCard();                                                                     // Calls the playCard method from the TrainerCard superclass, which is overridden in the TrainerCard subclass from the Card superclass
         System.out.println(getInformation() + player.getActive().getCardName());        // prints out the information and the name of the active Pokemon
-        player.getActive().vitalizePoke(30);                                      // Calls the vitalizePoke method for the active Pokemon to heal 30 damage (Overheal occurs)          
+        player.getActive().vitalizePoke(30);                                      // Calls the vitalizePoke method for the active Pokemon to heal 30 damage (Overheal can occur)          
         player.discardCard(this);                                                       // Calls the discard method so its added to the discard pile after activation 
         player.removeCardHand(this);                                                    // Calls the removeCard method to remove the card from the hand
     }
