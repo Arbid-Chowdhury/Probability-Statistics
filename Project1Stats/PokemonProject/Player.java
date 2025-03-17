@@ -158,11 +158,11 @@ public class Player {                                                   // Playe
             player2.drawCard(1);                                                                      // Draws 1 card for player2 using drawCard method
             makeHand();                                                                                     // current player makes hand again using makeHand method
         }
-        deckToPrizePile(prizePile);                                                                         // generate prizePile using deckToPrizePile method
+        deckToPrizePile();                                                                                  // generate prizePile using deckToPrizePile method
     }
 
-    private void deckToPrizePile(ArrayList<Card> prizePile) {                                               // deckToPrizePile for generating prizePile
-        for (int card = 0; card < 1; card++) {                                                              // for loop to add 6 cards to prizePile
+    private void deckToPrizePile() {                                                                        // deckToPrizePile for generating prizePile
+        for (int card = 0; card < 6; card++) {                                                              // for loop to add 6 cards to prizePile
             prizePile.add(deck.removeCard(0));                                                 // add top card from deck to prizePile each iteration
         }
     }
