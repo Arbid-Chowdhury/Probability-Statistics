@@ -1,6 +1,4 @@
 package PokemonProject;
-
-import java.util.ArrayList;
 //https://www.geeksforgeeks.org/interfaces-in-java/ used for understanding how to interface EnergyGuide & CardGuide to be implemented by EnergyCard
 
 public class EnergyCard extends Card implements CardGuide, EnergyGuide {                        // EnergyCard subclass that extends Card superclass and implements the CardGuide and EnergyGuide interfaces
@@ -27,10 +25,10 @@ public class EnergyCard extends Card implements CardGuide, EnergyGuide {        
     }
 
     @Override                                                                                                                       // Overrides the playCard method from the Card superclass          
-    public void attachEnergy(Player player, ArrayList<EnergyCard> activePokemonEnergy) {                                            // attachEnergy method to attach energy card to active Pokemon
+    public void attachEnergy(Player player) {                                                                                       // attachEnergy method to attach energy card to active Pokemon
         if (getType().equals(player.getActive().getType())) {                                                                       // checks if the EnergyCard type matches the Active Pokemon type
             System.out.println(getCardName() + " is attached to the active Pokemon: " + player.getActive().getCardName());          // prints out that the EnergyCard is attached to the Active Pokemon
-            activePokemonEnergy.add(this);                                                                                          // adds the EnergyCard to the activePokemonEnergy ArrayList            
+            player.getActivePokemonEnergy().add(this);                                                                              // adds the EnergyCard to the player's activePokemonEnergy             
             player.removeCardHand(this);                                                                                            // removes the EnergyCard from the player's hand
         }
         else {                                                                                                                      // else statement if the EnergyCard type does not match the Active Pokemon type               

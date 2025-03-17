@@ -341,7 +341,7 @@ public class PokemonGameMenu {
             }
         }
         EnergyCard attachedEnergy = (EnergyCard) player.getCardFromHand(energyCard);                                                                     // EnergyCard attachedEnergy is created from energyCard casted as EnergyCard
-        attachedEnergy.attachEnergy(player, player.getActivePokemonEnergy());                                                                            // attachedEnergy uses attachEnergy method to be added to player's activePokemonEnergy
+        attachedEnergy.attachEnergy(player);                                                                                                             // attachedEnergy uses attachEnergy method to be added to player's activePokemonEnergy
         System.out.println(" Energy Count: " + player.activeEnergyCounter());                                                                            // Display player's activePokemonEnergy count
         System.out.println("Type Superior to: " + attachedEnergy.getSuperiortyOver());                                                                   // Display attachedEnergy type superiority over
         return true;                                                                                                                                     // Return true in takeTurn method, player has attached Energy
