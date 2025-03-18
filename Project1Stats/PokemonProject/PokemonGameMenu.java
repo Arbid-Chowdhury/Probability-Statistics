@@ -297,7 +297,7 @@ public class PokemonGameMenu {
             System.out.println("2. Play A Trainer Card");                                                                         // Case 2: Play a Trainer card
             System.out.println("3. Play An Energy Card");                                                                         // Case 3: Play an Energy card
             System.out.println("4. Play A Pokemon Card From Hand");                                                               // Case 4: Play a Pokemon card from hand
-            System.out.println("5. Swap Active With Bench or Retreat Active to Bench");                                           // Case 5: Swap/Retreat active Pokemon with bench Pokemon
+            System.out.println("5. Swap/Retreat Active to Bench");                                                                // Case 5: Swap/Retreat active Pokemon with bench Pokemon
             System.out.println("6. Attack With Active Pokemon");                                                                  // Case 6: Attack with active Pokemon
             System.out.println("7. Evolve Pokemon");                                                                              // Case 7: Evolve Pokemon             
             System.out.println("8. End Turn");                                                                                    // Case 8: End turn
@@ -503,6 +503,9 @@ public class PokemonGameMenu {
             takeTurn(p1, p2, turn);                                                                                                                      // player 1 takes their turn
             if (p1.evaluateWinner(p2) == true) {                                                                                                         // evaluates if player 1 has won, considering the 3 win conditions
                 System.out.println(p1.getName() + " Won The Pokemon Battle!");                                                                           // Display player 1 has won the battle
+                System.out.println("G A M E  O V E R ");                                                                                               
+                System.out.println("Pokemon Card Game Shutting Down...\n");                               
+                System.out.println("Thanks for playing Pokemon Card Game!\n");        
                 endGame = true;                                                                                                                          // endGame is now true
                 break;                                                                                                                                   // break
             }
@@ -510,6 +513,9 @@ public class PokemonGameMenu {
                 takeTurn(p2, p1, turn);                                                                                                                  // player 2 takes their turn
                 if (p2.evaluateWinner(p1) == true) {                                                                                                     // evaluates if player 2 has won, considering the 3 win conditions
                     System.out.println(p2.getName() + " Won The Pokemon Battle!");                                                                       // Display player 2 has won the battle
+                    System.out.println("G A M E  O V E R ");                                                                                               
+                    System.out.println("Pokemon Card Game Shutting Down...\n");                               
+                    System.out.println("Thanks for playing Pokemon Card Game!\n");        
                     endGame = true;                                                                                                                      // endGame is now true
                     break;                                                                                                                               // break
                 }

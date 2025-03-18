@@ -2,7 +2,7 @@ package PokemonProject;
 
 //https://www.geeksforgeeks.org/interfaces-in-java/ used for understanding the possible implementation of the interface TrainerGuide implemented by TrainerCard
 
-public class BillTrainer extends TrainerCard{                                                         // BillTrainer subclass that extends TrainerCard superclass                
+public class BillTrainer extends TrainerCard {                                                        // BillTrainer subclass that extends TrainerCard superclass                
     public BillTrainer() {                                                                            // Constructor for BillTrainer                              
         super("Bill", "Drawing 2 cards for your hand", "Supporter");     // sets the name, information, and trainerType 
     }
