@@ -1,5 +1,4 @@
 package StatsLibrary2;
-
 public class TestStatsLibrary {
     public static void main(String[] args) {
 
