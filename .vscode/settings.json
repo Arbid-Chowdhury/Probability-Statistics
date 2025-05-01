@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "FinalProjectIII/lib/commons-math3-3.6.1.jar",
+        "FinalProjectIII/lib/jcommon-1.0.24.jar",
+        "FinalProjectIII/lib/jfreechart-1.5.4.jar"
+    ]
+}
