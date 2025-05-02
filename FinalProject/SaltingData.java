@@ -10,7 +10,7 @@ public class SaltingData {
  
     public void dataSalter(String input, String output, double saltBound) {              // method to write x/salted y points in csv
         if (saltBound <= 0) {                                                            // if saltBound is less than/equal to 0
-            System.out.println("Salt bound must be greater than 0");                   // displays to user that saltBound must be greater than 0
+            System.out.println("Salt bound must be greater than 0");                     // displays to user that saltBound must be greater than 0
             return;                                                                      // Return 
         }
         ArrayList<String> xyPoints = new ArrayList<String>();                            // ArrayList for xy points
@@ -20,7 +20,7 @@ public class SaltingData {
     public void saltArrayList(ArrayList<String> xyPoints, double saltBound) {            // method to salt xyPoints
         Random rand = new Random();                                                      // Random rand object
         for (int curX = 0; curX < xyPoints.size(); curX++) {                             // loops x values in xyPoints
-            String[] coords = xyPoints.get(curX).split(" , ");                     // String coords array of xy values, splitting x and y into strings with comma between                                        
+            String[] coords = xyPoints.get(curX).split(" , ");                           // String coords array of xy values, splitting x and y into strings with comma between                                        
             double x = Double.parseDouble(coords[0]);                                    // converts the split String x value into double 
             double y = Double.parseDouble(coords[1]);                                    // converts the split String y value into double
             y += rand.nextDouble() * 2 * saltBound - saltBound;                          // salts y value randomly using number within +/- saltBound                                          
