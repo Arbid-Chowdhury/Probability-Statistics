@@ -1,4 +1,4 @@
-package ArbidSimpleHashMap.MapExcercise;
+package ArbidSimpleHashMap.ClassExcercises;
 // In-class Excercise
 
 import java.util.HashMap;
